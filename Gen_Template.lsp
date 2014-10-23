@@ -1,0 +1,125 @@
+(defun C:Gen_Template ()
+
+(gc)
+
+
+; (setq xdim (getreal "X dimension in mm [by default, 40 mm]:"))
+; (if (null xdim) (setq xdim 40))
+; (setq ydim (getreal "Y dimension in mm [by default, 40 mm]:"))
+; (if (null ydim) (setq ydim 40))
+
+(setq turnon 0)
+(setq origmode (getvar 'osmode))
+(if (not (= (getvar 'osmode) 0))
+	(progn
+	(princ (setvar 'osmode 0))
+	(setq turnon 1)
+	)
+	)
+	
+; (setq thisfile "C:/Users/Philip/Documents/Hui Lab/Gen_Template_default.dat")
+; (if (setq sname (open thisfile "r"))
+	; (progn
+		; (princ Starting dialog....")
+		; (setq Dialog_Id (load_dialog "Gen_Template.dcl"))
+		; (new_dialog "Gen_Template" Dialog_Id)
+		; (set_tile "Title" "Generate Template")
+		; (setq xlim (read-line sname))
+		; (setq ylim (read-line sname))
+		; (setq xsep (read-line sname))
+		; (setq ysep (read-line sname))
+		; (setq border (read-line sname))
+		; (setq tabs (read-line sname))
+		; (setq dicewidth (read-line sname))
+		; (setq locktemplatelayer (read-line sname))
+		; (setq templatelayername (read-line sname))
+		; (setq templatelayercolor (read-line sname))
+		; (command "layer" "Make" templatelayername "Color" templatelayercolor "" "")
+		
+		; (while  (setq linefromfile (read-line sname))
+			; (progn
+			;	(setq linefromfile (read-line sname))
+			;	(
+			
+			; )
+			; )
+		; (close sname)
+			
+	; )
+	; (progn
+			; (princ "Error opening file:")
+			; (princ thisfile)
+	; )
+	; )
+
+(command "layer" "Make" "Template40by40" "Color" "132" "" "")
+;;GENERATE OUTLINE
+(command "text" "11.547,41.708" "20" "0" "A")
+(command "text" "53.7169,40.9731" "20" "0" "B")
+(command "line" "0,0" "40,0" "40,40" "-2,40" "")
+(command "line" "-2,40" "-3,39" "-3,21" "-2,20" "0,20" "0,0" "")
+(command "line" "40.762,0" "82.762,0" "83.762,1" "83.762,19" "82.762,20" "80.762,20" "80.762,40" "40.762,40" "40.762,0" "")
+(command "line" "40.381,-10" "40.381,50" "")
+
+;; GENERATE INNER GRID
+(command "line" "5,5" "5,35" "35,35" "35,5" "5,5" "")
+
+(command "line" "10,5" "10,35" "")
+(command "line" "15,5" "15,35" "")
+(command "line" "20,5" "20,35" "")
+(command "line" "25,5" "25,35" "")
+(command "line" "30,5" "30,35" "")
+
+(command "line" "5,10" "35,10" "")
+(command "line" "5,15" "35,15" "")
+(command "line" "5,20" "35,20" "")
+(command "line" "5,25" "35,25" "")
+(command "line" "5,30" "35,30" "")
+(command "line" "5,35" "35,35" "")
+
+(command "line" "45.762,5" "75.762,5" "75.762,35" "45.762,35" "45.762,5" "")
+(command "line" "50.762,5" "50.762,35" "")
+(command "line" "55.762,5" "55.762,35" "")
+(command "line" "60.762,5" "60.762,35" "")
+(command "line" "65.762,5" "65.762,35" "")
+(command "line" "70.762,5" "70.762,35" "")
+(command "line" "75.762,5" "75.762,35" "")
+(command "line" "45.762,10" "75.762,10" "")
+(command "line" "45.762,15" "75.762,15" "")
+(command "line" "45.762,20" "75.762,20" "")
+(command "line" "45.762,25" "75.762,25" "")
+(command "line" "45.762,30" "75.762,30" "")
+(command "line" "45.762,35" "75.762,35" "")
+
+(command "layer" "Lock" "Template40by40" "")
+(command "layer" "Lock" "0" "")
+
+(command "layer" "Make" "0.02IN DIA" "Color" "115" "" "")
+(command "layer" "Make" "0.0635IN DIA Alignment Holes" "Color" "132" "" "")
+(command "circle" "37.5,37.8409" "0.725" "")
+(command "circle" "37.5,2.5" "0.725" "")
+(command "circle" "2.5,2.5" "0.725" "")
+(command "circle" "2.5,37.8409" "0.725" "")
+(command "circle" "43.262,37.8409" "0.725" "")
+(command "circle" "78.262,37.8409" "0.725" "")
+(command "circle" "78.262,2.5" "0.725" "")
+(command "circle" "43.262,2.5" "0.725" "")
+
+
+(command "layer" "Make" "0.002IN DIA" "Color" "red" "" "")
+(command "layer" "Make" "0.003IN DIA" "Color" "20" "" "")
+(command "layer" "Make" "0.004IN DIA" "Color" "30" "" "")
+(command "layer" "Make" "0.005IN DIA" "Color" "50" "" "")
+(command "layer" "Make" "0.008IN DIA" "Color" "80" "" "")
+(command "layer" "Make" "0.03IN DIA" "Color" "150" "" "")
+(command "layer" "Make" "0.04IN DIA" "Color" "blue" "" "")
+(command "layer" "Make" "0.0102 IN GND HOLES" "Color" "93" "" "")
+(command "layer" "Make" "0.03IN DIA Valve Seats" "Color" "210" "" "")
+(command "layer" "Make" "0.0635 IN TUBE HOLES" "Color" "212" "" "")
+(command "layer" "Make" "Construction Lines" "Color" "8" "" "")
+(COMMAND "PURGE" "LA" "Layer1" "N")
+(command "zoom" "Extents")
+(princ "Generated.\n")
+(if (= turnon 1) (setvar 'osmode origmode))
+(princ)
+)
