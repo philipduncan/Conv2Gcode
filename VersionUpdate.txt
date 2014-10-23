@@ -3,6 +3,6 @@ conv_um_settings.dat#conv_um_settings.dat#test\#
 conv_um_diag.dcl#conv_um_diag.dcl#test\#
 default_conv_um_settings.dat#default_conv_um_settings.dat#test\#
 Gen_Template.lsp#Gen_Template.lsp#test\#
-Gen_template_default.dat#Gen_template_default.dat#test\#
+Gen_Template_default.dat#Gen_Template_default.dat#test\#
 serial_library.dat#serial_library.dat#test\#
 checkopen.dat#checkopen.dat#test\#
